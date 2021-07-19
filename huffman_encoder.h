@@ -1,25 +1,27 @@
 #ifndef HUFFMAN_ENCODER
 #define HUFFMAN_ENCODER
 
-#include <map>
-#include <queue>
-#include <cmath>
 #include <functional>
+#include <fstream>
+#include <cmath>
+#include <queue>
+#include <map>
 
 #include "node.h"
 
-typedef std::queue<std::pair<char, std::string>> HuffmanTable;
+typedef std::unordered_map<char, std::string> HuffmanTable;
 
 class HuffmanEncoder
 {
 public:
 	explicit HuffmanEncoder(const std::string &textToEncode) noexcept;
 
-	std::string getEncodedText();
+	// returns final encoded text written in binary
+	std::string getEncodedText() const noexcept;
 
 private:
-	std::string encode(const std::string &textToEncode) noexcept;
-	std::string encodedText;
+	void encode(const std::string &textToEncode) noexcept;
+	std::string encodedText = "";
 
 	/*
 	 * This function recursively iterates through the nodes and gives the leaf unique binary code
@@ -32,17 +34,12 @@ private:
 	 * parentPosition must be given as binary string e.g. "00010"
 	 */
 	void generateHuffmanTable(const std::shared_ptr<Node> &node, HuffmanTable &huffmanTable, std::string parentPosition = "") noexcept;
-	// std::queue<std::pair<char, std::string>> codes;
-
-	// std::unique_ptr<HuffmanTable> huffmanTable;
 
 	/*
 	 * This queue sorts the nodes in the decreasing order
 	 * So the right(on the top) ones are always with the smallest frequency
 	 */
 	std::priority_queue<std::shared_ptr<Node>, std::vector<std::shared_ptr<Node>>, NodeComparator> nodes;
-
-	std::string fromBinaryStringToDecimalString(std::string binary) noexcept;
 };
 
 #endif // HUFFMAN_ENCODER
