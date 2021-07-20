@@ -38,27 +38,27 @@ void HuffmanEncoder::encode(const std::string &textToEncode) noexcept
 
 		// encode using the generated huffman table
 		for(char ch: textToEncode) {
-			encodedText += newHuffmanTable[ch];
+			// encodedText += newHuffmanTable[ch];
 		}
 	}
 }
 
-void HuffmanEncoder::generateHuffmanTable(const std::shared_ptr<Node> &node, HuffmanTable &huffmanTable, std::string parentPosition) noexcept
+void HuffmanEncoder::generateHuffmanTable(const std::shared_ptr<Node> &node, HuffmanTable &huffmanTable, BitsContainer parentPosition) noexcept
 {
 	const auto leftChild = node->getLeftChild();
 	if(leftChild) {
-		const std::string newLeftBinaryPos = parentPosition + "0";
+		const BitsContainer newLeftPos = parentPosition + 0;
 		if(leftChild->isLeaf())
-			huffmanTable[leftChild->getValue()[0]] = newLeftBinaryPos;
+			huffmanTable.append(leftChild->getValue()[0], newLeftPos);
 		else
-			generateHuffmanTable(leftChild, huffmanTable, newLeftBinaryPos);
+			generateHuffmanTable(leftChild, huffmanTable, newLeftPos);
 	}
 	const auto rightChild = node->getRightChild();
 	if(rightChild) {
-		const std::string newRightBinaryPos = parentPosition + "1";
+		const BitsContainer newRightPos = parentPosition + 0;
 		if(rightChild->isLeaf())
-			huffmanTable[rightChild->getValue()[0]] = newRightBinaryPos;
+			huffmanTable.append(rightChild->getValue()[0], newRightPos);
 		else
-			generateHuffmanTable(rightChild, huffmanTable, newRightBinaryPos);
+			generateHuffmanTable(rightChild, huffmanTable, newRightPos);
 	}
 }

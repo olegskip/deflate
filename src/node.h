@@ -29,9 +29,6 @@ private:
 class NodeComparator
 {
 public:
-	bool operator()(const std::shared_ptr<Node> &first, const std::shared_ptr<Node> &second) noexcept
-	{
-		return first->getFrequency() > second->getFrequency();
-	}
+	bool operator()(const std::shared_ptr<Node> &first, const std::shared_ptr<Node> &second) const noexcept;
 };
 #endif // NODE_H

@@ -41,3 +41,8 @@ bool Node::isLeaf() const noexcept
 {
 	return !leftChild && !rightChild;
 }
+
+bool NodeComparator::operator()(const std::shared_ptr<Node> &first, const std::shared_ptr<Node> &second) const noexcept
+{
+	return first->getFrequency() > second->getFrequency();
+}

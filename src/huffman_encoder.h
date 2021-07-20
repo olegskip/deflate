@@ -5,11 +5,10 @@
 #include <fstream>
 #include <cmath>
 #include <queue>
-#include <map>
 
 #include "node.h"
-
-typedef std::unordered_map<char, std::string> HuffmanTable;
+#include "huffman_table.h"
+#include "bits_container.h"
 
 class HuffmanEncoder
 {
@@ -33,7 +32,7 @@ private:
 	 * 
 	 * parentPosition must be given as binary string e.g. "00010"
 	 */
-	void generateHuffmanTable(const std::shared_ptr<Node> &node, HuffmanTable &huffmanTable, std::string parentPosition = "") noexcept;
+	void generateHuffmanTable(const std::shared_ptr<Node> &node, HuffmanTable &huffmanTable, BitsContainer parentPosition = {}) noexcept;
 
 	/*
 	 * This queue sorts the nodes in the decreasing order
