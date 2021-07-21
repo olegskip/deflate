@@ -1,4 +1,7 @@
 https://fat-crocodile.livejournal.com/193155.html
 https://fat-crocodile.livejournal.com/194295.html
-./rfc1951.pdf
 https://zlib.net/feldspar.html
+https://habr.com/ru/post/141827/
+https://en.wikipedia.org/wiki/LZ77_and_LZ78
+https://habr.com/ru/company/mailru/blog/490790/
+./rfc1951.pdf

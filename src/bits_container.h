@@ -10,5 +10,4 @@ public:
 	BitsContainer operator+(bool newValue) noexcept;
 };
 
-
 #endif // BITS_CONTAINER

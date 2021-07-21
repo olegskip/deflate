@@ -1,6 +1,6 @@
 #include "huffman_table.h"
 
-bool CodesComparator::operator()(const CharAndBitsPair &firstPair, const CharAndBitsPair &secondPair) const noexcept
+bool CodesComparator::operator()(const CharWithBit &firstPair, const CharWithBit &secondPair) const noexcept
 {
 	if(firstPair.second.size() == secondPair.second.size()) { 
 		// if the codes are equal we should compare them lexicographically

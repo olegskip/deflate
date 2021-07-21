@@ -7,7 +7,7 @@
 #include "bits_container.h"
 
 
-typedef std::pair<char, std::vector<bool>> CharAndBitsPair;
+typedef std::pair<char, BitsContainer> CharWithBit;
 
 /* 
  * The Huffman codes uses two rules:
@@ -17,7 +17,7 @@ typedef std::pair<char, std::vector<bool>> CharAndBitsPair;
 class CodesComparator
 {
 public:
-	bool operator()(const CharAndBitsPair &firstPair, const CharAndBitsPair &secondPair) const noexcept;
+	bool operator()(const CharWithBit &firstPair, const CharWithBit &secondPair) const noexcept;
 };
 
 
@@ -29,7 +29,7 @@ public:
 	void append(char ch, BitsContainer codeInBits) noexcept;
 
 private:
-	std::set<CharAndBitsPair, CodesComparator> charAndBitsContainer;
+	std::set<CharWithBit, CodesComparator> charAndBitsContainer;
 };
 
 
